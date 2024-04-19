@@ -16,7 +16,7 @@
            acc {:count-url 0 :sum-bytes 0}]
       (if-not (seq rem-log) acc
               (recur (drop 2 rem-log)
-                     (let [{:keys [url bytes referer]} (read-log-line (first rem-log))] 
+                     (let [{:keys [url bytes referer]} (parse-line (first rem-log))] 
                        (if (or (= url url-requested) 
                                (= referer referer-requested) 
                                (every? nil? [url-requested referer-requested])) 
